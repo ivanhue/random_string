@@ -1,0 +1,302 @@
+/* Color declaration  */
+:root{
+    --note-color-1: #fcb059;
+    --note-color-2: #fa8072;
+    --note-color-3: #789dca;
+    --note-color-4:  #57bd9e;
+    --note-color-5: #b19cd9;
+}
+
+/* General properties */
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+
+/* Header properties */
+header{
+    font-size: 1.2rem;
+    padding-left: 0.5rem;
+    padding-bottom: 1.25rem;
+    width: 100%;
+    margin: auto;
+    color: #ffffff;
+    background: #222831;
+}
+
+/* Nav Properties */
+.menu{
+    z-index: 8;
+    position: fixed;
+    height: 100%;
+    width: 9vh;
+    background: #222831;
+    transition: 0.5s;
+    overflow: hidden;
+}
+
+.menu:hover,
+.menu.active{
+    width: 300px;
+}
+
+.menu ul{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+}
+
+.menu ul li{
+    position: relative;
+    width: 100%;
+    list-style: none;
+
+}
+
+.menu ul li:hover{
+    background:  #5cc4b6;
+}
+
+.menu ul li a{
+    position: relative;
+    display: block;
+    width: 100%;
+    display: flex;
+    text-decoration: none;
+    color: #FFFFFF;
+    font-weight: 600;
+}
+
+.menu ul li a .icon{
+    position: relative;
+    display: block;
+    min-width: 9vh;
+    height: 9vh;
+    line-height: 9vh;
+    text-align: center;
+}
+
+.menu ul li a .icon .fa{
+    font-size: 24px;
+}
+
+.menu ul li a .title{
+    position: relative;
+    display: block;
+    padding: 0 10px;
+    height: 9vh;
+    line-height: 9vh;
+    text-align: start;
+    white-space: nowrap;
+}
+
+.toggle{
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 60px;
+    height: 64px;
+    background: #006d77;
+    cursor: pointer;
+}
+
+.toggle.active{
+    background:  #43aa8b;
+}
+
+.toggle::before{
+    content: '\f0c9';
+    font-family: 'Font Awesome\ 5 Free';
+    font-weight: 900;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    line-height: 60px;
+    text-align: center;
+    font-size: 24px;
+    color: #ffffff;
+}
+
+.toggle.active::before{
+    content: '\f00d';
+
+}
+
+/*form properties*/
+form{
+    min-height: 20vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+form input, form button{
+    padding: 0.5rem;
+    font-size: 1rem;
+    border: none;
+    border-bottom: solid 2px #000000;
+    background-color: #ffffff;
+}
+
+form button{
+    color: #443F46;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+form button:hover{
+    background: #443F46;
+    color: #FFFFFF;
+}
+
+.colors-menu{
+    display: flex;
+    align-items: center;
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.colors-menu p{
+    margin-right: 2em;
+}
+
+select{
+    font-size: 1rem;
+    padding: 1em 1.25em;
+    border: 1px solid #5cc4b6;
+}
+
+/*Todo properties*/
+.todo{
+    padding-top: 3.5rem;
+}
+
+.todo-list{
+    width: 70%;
+    display: flex;
+    justify-content: center;
+    border: 3px solid #443F46;
+    border-top: none;
+    border-radius: 15px;
+    margin: auto;
+    background: #FFFFFF;
+    max-width: 38rem;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    box-shadow: 4px 10px 4px #000000;
+}
+
+.todo-header{
+    display: flex;
+    width: 70%;
+    max-width: 38rem;
+    margin: auto;
+    justify-content: center;
+    border: 3px solid #443F46;
+    border-radius: 15px;
+    border-bottom: none;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    background: #F4B634;
+    color: #ffffff;
+    box-shadow: 4px 10px 4px #000000;
+}
+
+.todo-body {
+    flex-wrap: wrap;
+    width: inherit;
+    border-radius: 15px;
+}
+
+.notes{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    min-height: 20vh;
+}
+
+.todo-lists{
+    width: inherit;
+    list-style: none;
+}
+
+.note{
+    width: 100%;
+    margin: 0.5rem;
+    border-left: 35px solid var(--note-color-3);
+    border-right: none;
+    font-size: 1.1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 15px;
+    box-shadow: 1px 1px 3px #000000;
+}
+
+.note li{
+    flex: 1;
+    overflow: auto;
+}
+
+.delete-btn, .complete-btn{
+    border: none;
+    color: white;
+    padding: 1rem;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+.delete-btn{
+    background: rgb(247, 30, 30);
+}
+.complete-btn{
+    background: rgb(63, 182, 73);
+    border-bottom-right-radius: 15px;
+    border-top-right-radius: 15px;
+}
+
+.fa-trash,
+.fa-check {
+  pointer-events: none;
+}
+
+.note-content{
+    padding: 0 0.5rem;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.completed {
+    text-decoration: line-through;
+    opacity: 0.5;
+    transition: all 0.3s ease;
+}
+
+/* Properties for small devices */
+@media (max-width: 870px){
+    .menu{
+        left: -9vh;
+        z-index: 2;
+    }
+    .menu.active{
+        left: 0px;
+        width: 100%;
+        z-index: 2;
+    }
+
+    form input{
+        max-width: 30vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .todo-header, .todo-body ,.todo-list{
+        width: 90%;
+    }
+}
+

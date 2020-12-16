@@ -1,0 +1,178 @@
+/* General properties */
+*{
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+}
+
+/* Header properties */
+.header{
+    width: 80%;
+    margin: auto;
+}
+
+.navbar{
+    margin: 30px auto;
+    display: flex;
+    align-items: center;
+}
+
+ul{
+    flex: 1;
+    text-align: right;
+}
+
+ul li{
+    display: inline-block;
+    list-style: none;
+    margin: 0 25px;
+}
+
+ul li a{
+    text-decoration: none;
+    color: #000000;
+    padding: 0 10px;
+    position: relative;
+}
+
+ul li a::after{
+    content: '';
+    width: 0;
+    height: 10px;
+    background: #4481eb;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: -45px;
+    transition: 0.5s;
+}
+
+ul li a:hover::after{
+    width: 100%;
+}
+
+/* Content properties */
+.banner{
+    display: flex;
+    margin-top: 80px;
+}
+
+.left-column, .right-column{
+    flex-basis: 50%;
+}
+
+.right-column img{
+    width: 100%;
+}
+
+.left-column h1{
+    font-size: 3rem;
+}
+
+.left-column h3{
+    font-size: 1.5rem;
+}
+
+span{
+    color: rgb(253, 176, 89);
+}
+
+.btn button{
+    padding: 7px 30px;
+    margin-top: 10px;
+    margin-right: 15px;
+    outline: none;
+    border: 1px solid #4481eb;
+    border-radius: 20px;
+    cursor: pointer;
+    background-color: #3350f5;
+}
+
+.btn button a{
+    text-decoration: none;
+    color: #ffffff;
+}
+
+/* Card properties */
+.cards{
+    max-width: 1100px;
+    margin: 0 auto;
+    text-align: center;
+    padding: 30px;
+
+}
+.cards h1{
+    font-size: 40px;
+    margin: 0 0 30px 0;
+
+}
+
+.features{
+    display: flex;
+    align-items: center;
+}
+
+.content{
+    display: flex;
+    flex-wrap: wrap;
+    flex: 1;
+    margin: 20px;
+    padding: 20px;
+    border: 2px solid #000000;
+    border-radius: 4px;
+    transition: all .3s ease;
+}
+
+.content:hover{
+    color: #ffffff;
+}
+
+.content-1:hover{
+    border-color: #57bd9e;
+    background: #57bd9e;
+}
+
+.content-2:hover{
+    border-color: #789dca;
+    background: #789dca;
+}
+.content-3:hover{
+    border-color: #b19cd9;
+    background: #b19cd9;
+}
+
+.content .fas{
+    font-size: 70px;
+    margin: 16px 0;
+}
+
+.content > *{
+    flex: 1 1 100%;
+}
+
+.content h2{
+    font-size: 30px;
+    margin: 16px 0;
+}
+
+/* Properties for medium devices */
+@media (max-width: 870px){
+    .right-column img{
+        width: 600px;
+    }
+    .features{
+        flex-direction: column;
+    }
+}
+
+/* Properties for small devices */
+@media (max-width: 570px){
+    .banner{
+        flex-flow: row wrap;
+        justify-content: center;
+    }
+    .right-column img{
+        width: 250px;
+    }
+}
+

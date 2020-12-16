@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"
+        integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog=="
+        crossorigin="anonymous" />
+    <link rel="stylesheet" href="styles/members.css">
+    <title>Miembros</title>
+</head>
+
+<header class="">
+    <h1>To-Do List</h1>
+</header>
+
+<body>
+    <!-- Navbar -->
+    <div class="menu">
+        <ul>
+            <li>
+                <a href="dashboard.html">
+                    <span class="icon"><i class="fas fa-home"></i></span>
+                    <span class="title">Inicio</span>
+                </a>
+            </li>
+
+            <li>
+                <a href="members.html">
+                    <span class="icon"><i class="fas fa-users"></i></span>
+                    <span class="title">Miembros</span>
+                </a>
+            </li>
+
+            <li id="logout">
+                <a href="#">
+                    <span class=" icon"> <i class="fas fa-sign-out-alt"></i></i></span>
+                    <span class="title">Cerrar sesión</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+    <div class="toggle"></div>
+
+    <div class="main-title">
+        <span>Miembros.</span>
+        <p>Aquí puedes gestionar los miembros de tus grupos.</p>
+    </div>
+    <div class="dropdown">
+        <div class="select">
+            <select id="SelectGroup">
+                <option value="">Selecciona un grupo</option>
+            </select>
+            <span class="arrow"></span>
+        </div>
+    </div>
+
+    <!-- Shows the members for each group -->
+    <div class="members">
+        <div class="member-list" id="Member-List">
+        </div>
+    </div>
+
+</body>
+<!-- SDK FIREBASE -->
+<script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-database.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-functions.js"></script>
+
+<script src="scripts/firebaseInit.js"></script>
+<script src="scripts/members.js"></script>
+<script src="scripts/crudMembers.js"></script>
+<script src="scripts/logout.js"></script>
+
+</html>

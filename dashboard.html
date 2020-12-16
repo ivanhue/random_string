@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles/dashboard.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"
+        integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog=="
+        crossorigin="anonymous" />
+    <title>Página Principal</title>
+</head>
+
+<header>
+    <h1>To-Do List</h1>
+</header>
+
+<body>
+    <!-- Navbar -->
+    <div class="menu">
+        <ul>
+            <li>
+                <a href="dashboard.html">
+                    <span class="icon"><i class="fas fa-home"></i></span>
+                    <span class="title">Inicio</span>
+                </a>
+            </li>
+
+            <li>
+                <a href="members.html">
+                    <span class="icon"><i class="fas fa-users"></i></span>
+                    <span class="title">Miembros</span>
+                </a>
+
+            </li>
+
+            <li id="logout">
+                <a href="#">
+                    <span class=" icon"> <i class="fas fa-sign-out-alt"></i></i></span>
+                    <span class="title">Cerrar sesión</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+    <div class="toggle"></div>
+
+    <div class="main-title">
+        <span>Menú principal.</span>
+        <p>Aquí puedes crear notas nuevas, además de navegar a notas ya creadas.</p>
+    </div>
+
+    <div class="wrapper">
+        <div class="links">
+            <ul>
+                <li data-view="list-view" class="li-list active">
+                    <i class="fas fa-th-list"></i>
+                    Lista</li>
+                <li data-view="grid-view" class="li-grid">
+                    <i class="fas fa-th-large"></i>
+                    Bloques</li>
+            </ul>
+        </div>
+        <div class="view_main">
+            <div class="view_wrap list-view" id="wrap">
+            </div>
+            <div class="view_wrap grid-view" style="display: none;" id="wrap2">
+            </div>
+        </div>
+    </div>
+
+    <!-- Floating button -->
+    <div class="action">
+        <span>+</span>
+        <ul>
+            <li>
+                <button class="new-note"> <i class="fas fa-plus-circle"></i>Crea
+                    un grupo nuevo (nota)</button>
+            </li>
+            <li> <button class="join-note"> <i class="fas fa-sign-in-alt"></i>Unirse a un grupo</button></li>
+        </ul>
+    </div>
+
+    <!-- popup -->
+    <div class="modal" id="modal">
+        <!-- Gives a name to the note -->
+        <div class="modal-note active">
+            <div class="modal-header">
+                <div class="modal-title"><i class="fas fa-fingerprint"></i>¿Cómo se llama el grupo?</div>
+                <button class="close-btn">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form onsubmit="return false">
+                    <label for="input-modal">Título del grupo:</label>
+                    <input type="text" name="input-modal" id="title-modal" required>
+                </form>
+                <div class="btn modal-btn" id="modalBtn1"><button>Siguiente</button></div>
+            </div>
+        </div>
+        <!-- Gives the password -->
+        <div class="note-password">
+            <div class="modal-header">
+                <div class="modal-title"><i class="fas fa-key"></i>Crea una contraseña</div>
+                <button class="close-btn">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form onsubmit="return false">
+                    <label for="input-modal">contraseña:</label>
+                    <input type="text" name="input-modal" id="psswrd-modal" required onsubmit="">
+                </form>
+                <div class="btn modal-btn" id="modalBtn2"><button>Siguiente</button></div>
+            </div>
+        </div>
+        <!-- returns the id to the user -->
+        <div class="note-id">
+            <div class="modal-header">
+                <div class="modal-title"><i class="fas fa-id-badge"></i>Id para compartir</div>
+                <button class="close-btn">&times;</button>
+            </div>
+            <div class="modal-body">
+                Tu id es: <h3 id="h3">${GroupId}</h3>
+                <div class="btn modal-btn" id="modalBtn3">Finalizar</div>
+            </div>
+        </div>
+
+        <!--Join group modal-->
+        <div class="modal-join">
+            <div class="modal-header">
+                <div class="modal-title"><i class="fas fa-id-badge"></i>Ingresa el id del grupo</div>
+                <button class="close-btn">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form onsubmit="return false">
+                    <label for="input-modal">Id del grupo:</label>
+                    <input type="text" name="input-modal" id="JoinId" required>
+                </form>
+                <div class="btn modal-btn-join" id="modalBtn4"><button>Siguiente</button></div>
+            </div>
+        </div>
+        <div class="join-psswrd">
+            <div class="modal-header">
+                <div class="modal-title"><i class="fas fa-fingerprint"></i>Ingresa la contraseña</div>
+                <button class="close-btn">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form onsubmit="return false">
+                    <label for="input-modal">Contraseña del grupo:</label>
+                    <input type="password" name="input-modal" id="JoinP" required>
+                </form>
+                <div class="btn modal-btn-join" id="modalBtn5"><button>Siguiente</button></div>
+            </div>
+        </div>
+        <!--If pswrd or id is wrong show this-->
+        <div class="join-error">
+            <div class="modal-header">
+                <div class="modal-title"><i class="fas fa-times-circle"></i>Error</div>
+                <button class="close-btn">&times;</button>
+            </div>
+            <div class="modal-body">
+                El id o la contraseña son incorrectos, inténtalo de nuevo.
+                <div class="btn modal-btn-join" id="modalBtn6">Finalizar</div>
+            </div>
+        </div>
+        <!--If pswrd and id are correct show this-->
+        <div class="join-success">
+            <div class="modal-header">
+                <div class="modal-title"><i class="fas fa-user-check"></i>Completado</div>
+                <button class="close-btn">&times;</button>
+            </div>
+            <div class="modal-body">
+                Te has unido correctamente.
+                <div class="btn modal-btn-join" id="modalBtn6">Finalizar</div>
+            </div>
+        </div>
+    </div>
+    <div id="overlay"></div>
+    <script src="scripts/dashboard.js"></script>
+</body>
+
+<!-- SDK FIREBASE -->
+<script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-database.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-functions.js"></script>
+
+<script src="scripts/firebaseInit.js"></script>
+<script src="scripts/vericateLog.js"></script>
+<script src="scripts/logout.js"></script>
+<script src="scripts/crudGroup.js"></script>
+
+</html>

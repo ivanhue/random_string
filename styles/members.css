@@ -1,0 +1,256 @@
+/* General Properties */
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+
+/* Header Properties */
+header{
+    font-size: 1.2rem;
+    padding-left: 0.5rem;
+    padding-bottom: 1.25rem;
+    width: 100%;
+    margin: auto;
+    color: #ffffff;
+    background: #222831;
+}
+
+/* Nav Properties */
+.menu{
+    position: fixed;
+    height: 100%;
+    width: 9vh;
+    background: #222831;
+    transition: 0.5s;
+    overflow: hidden;
+}
+
+.menu:hover,
+.menu.active{
+    width: 300px;
+}
+
+.menu ul{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+}
+
+.menu ul li{
+    position: relative;
+    width: 100%;
+    list-style: none;
+
+}
+
+.menu ul li:hover{
+    background:  #5cc4b6;
+}
+
+.menu ul li a{
+    position: relative;
+    display: block;
+    width: 100%;
+    display: flex;
+    text-decoration: none;
+    color: #FFFFFF;
+    font-weight: 600;
+}
+
+.menu ul li a .icon{
+    position: relative;
+    display: block;
+    min-width: 9vh;
+    height: 9vh;
+    line-height: 9vh;
+    text-align: center;
+}
+
+.menu ul li a .icon .fa{
+    font-size: 24px;
+}
+
+.menu ul li a .title{
+    position: relative;
+    display: block;
+    padding: 0 10px;
+    height: 9vh;
+    line-height: 9vh;
+    text-align: start;
+    white-space: nowrap;
+}
+
+.toggle{
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 60px;
+    height: 64px;
+    background: #006d77;
+    cursor: pointer;
+}
+
+.toggle.active{
+    background:  #43aa8b;
+}
+
+.toggle::before{
+    content: '\f0c9';
+    font-family: 'Font Awesome\ 5 Free';
+    font-weight: 900;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    line-height: 60px;
+    text-align: center;
+    font-size: 24px;
+    color: #ffffff;
+}
+
+.toggle.active::before{
+    content: '\f00d';
+}
+
+/* Title properties*/
+.main-title{
+    display: flex;
+    align-items: center;
+    text-align: center;
+    flex-direction: column;
+    margin: 1.5rem;
+}
+
+.main-title span{
+    font-size: 3.5rem;
+    padding-bottom: 1rem;
+    font-weight: 600;
+}
+
+.main-title p{
+    font-size: 1.5rem;
+}
+
+/* Properties for the dropdown */
+.dropdown{
+    display: grid;
+    place-items: center;
+}
+
+.select{
+    position: relative;
+}
+
+select{
+    font-size: 1.15rem;
+    padding: 1em 6em 1em 1.25em;
+    border: 0;
+    border-bottom: 2px solid #5cc4b6;
+    border-bottom-right-radius: 3px;
+}
+
+.arrow{
+    position: absolute;
+    top: 0;
+    right: 0;
+    display: block;
+    background: #5cc4b6;
+    height: 100%;
+    width: 2rem;
+    pointer-events: none;
+    border-bottom-right-radius: 3px;
+    border-top-right-radius: 3px;
+}
+
+.arrow::before,
+.arrow::after{
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 0;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+
+.arrow::before{
+    border-left: .75em solid transparent;
+    border-right: .75em solid transparent;
+    border-bottom: .75em solid rgba(255, 255, 255, .9);
+    top: 35%;
+}
+
+.arrow::after{
+    border-left: .75em solid transparent;
+    border-right: .75em solid transparent;
+    border-top: .75em solid rgba(255, 255, 255, .9);
+    top: 65%;
+}
+
+/* Properties for the memebers */
+
+.member-list{
+    display: flex;
+    justify-content: center;
+    margin-top: 4rem;
+    flex-direction: column;
+    align-items: center;
+}
+
+.member{
+    display: flex;
+    margin: 1rem;
+    padding: 1.5rem;
+    justify-content: space-between;
+    align-items: center;
+    width: 70%;
+    border: 2px solid black;
+    border-radius: 4px;
+    box-shadow: 4px 4px 4px #000000;
+}
+
+.member span{
+    flex: 1;
+    font-weight: 600;
+    font-size: 1.25rem;
+}
+
+.member button{
+    font-size: 1.25rem;
+    margin-right: .75rem;
+    padding: .5rem;
+    appearance: none;
+    background: #ffffff;
+    border: 1px solid;
+    border-radius: 4px;
+}
+
+button .fa-crown{
+    color: #fcb059;
+}
+
+button .fa-ban{
+    color: #F44950;
+}
+
+button .fa-user-times{
+    color: #f87427;
+}
+
+/* Properties for medium devices */
+@media (max-width: 870px){
+    .menu{
+        left: -9vh;
+        z-index: 2;
+    }
+
+    .menu.active{
+        left: 0px;
+        width: 100%;
+        z-index: 2;
+    }
+    .member{
+        max-width: 90%;
+    }
+}
