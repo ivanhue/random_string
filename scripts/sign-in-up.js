@@ -42,6 +42,15 @@ formSignin.addEventListener('submit', e => {
                 e.target.name.value,
                 e.target.email.value
             )
+            //Send e-mail verification
+
+            res.user.sendEmailVerification().then(function() {
+                alert("Se ha enviado un mensaje de verificacion a su correo");
+                e.target.reset();
+              }).catch(function(error) {
+                alert("No se ha podido enviar un correo de verificacion, registro incompleto");
+                c(error);
+              });
 
         })
         .catch(err => {
@@ -69,10 +78,18 @@ formLogin.addEventListener('submit', e => {
         e.target.email.value,
         e.target.password.value
     )
-        .then(user => {
-            c(user)
-            alert('Usuario logueado con el correo ' + e.target.email.value)
-            window.location.replace("dashboard.html");
+        .then(u => {
+            c(u)
+            
+            //Verificate e-mail status
+            if(u.user.emailVerified){
+                alert('Usuario logueado con el correo ' + e.target.email.value);
+                window.location.replace("dashboard.html");
+            }else{
+                alert("Su correo no ha sido verificado, no podra iniciar sesion hasta hacerlo");
+                auth.signOut();
+            }
+            
             e.target.reset()
         })
         .catch(err => {
