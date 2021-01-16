@@ -30,7 +30,14 @@ function createUserInDB(uid, name, email) {
 
 //event listeners
 
+//Closes the pop up with the button, it only modifies the DOM
 closeModal.addEventListener("click", () => {
+    modal.classList.remove("active");
+    overlay.classList.remove("active");
+});
+
+//Closes the pop up by ckicking the shaded part, does not receive any parametres, it only modifies the DOM
+overlay.addEventListener("click", () => {
     modal.classList.remove("active");
     overlay.classList.remove("active");
 });
@@ -38,7 +45,7 @@ closeModal.addEventListener("click", () => {
 
 formSignin.addEventListener('submit', e => {
     e.preventDefault()
-    alert('Registrando..')
+    //alert('Registrando..')
 
 
     auth.createUserWithEmailAndPassword(
@@ -57,10 +64,16 @@ formSignin.addEventListener('submit', e => {
             //Send e-mail verification
 
             res.user.sendEmailVerification().then(function () {
-                alert("Se ha enviado un mensaje de verificacion a su correo");
+                modalTitle.innerHTML = "¡Solo un paso más!";
+                modalBody.innerHTML = "Se ha enviado un mensaje de verificacion a su correo.";
+                modal.classList.add("active");
+                overlay.classList.add("active");
                 e.target.reset();
             }).catch(function (error) {
-                alert("No se ha podido enviar un correo de verificacion, registro incompleto");
+                modalTitle.innerHTML = "Ha ocurido un error.";
+                modalBody.innerHTML = "No se ha podido mandar un correo de verificación, inténtelo de nuevo.";
+                modal.classList.add("active");
+                overlay.classList.add("active");
                 c(error);
             });
 
@@ -69,13 +82,22 @@ formSignin.addEventListener('submit', e => {
             console.error(err)
             switch (err.code) {
                 case 'auth/invalid-email':
-                    alert('La dirección de correo electrónico esta vacia.');
+                    modalTitle.innerHTML = "Registro incompleto";
+                    modalBody.innerHTML = "La dirección de correo está vacía.";
+                    modal.classList.add("active");
+                    overlay.classList.add("active");
                     break;
                 case 'auth/weak-password':
-                    alert('La contraseña debe tener al menos 6 caracteres.');
+                    modalTitle.innerHTML = "Registro incompleto";
+                    modalBody.innerHTML = "La contraseña debe tener al menos 6 caracteres.";
+                    modal.classList.add("active");
+                    overlay.classList.add("active");
                     break;
                 case 'auth/email-already-in-use':
-                    alert('La cuenta de correo ' + e.target.email.value + ' ya existe. Intenta con otra.');
+                    modalTitle.innerHTML = "Registro incompleto";
+                    modalBody.innerHTML = 'La cuenta de correo', e.target.email.value, 'ya existe. Intente con otra,';
+                    modal.classList.add("active");
+                    overlay.classList.add("active");
                     break;
                 default:
             }
@@ -101,7 +123,10 @@ formLogin.addEventListener('submit', e => {
                 overlay.classList.add("active");
                 window.location.replace("dashboard.html");
             } else {
-                alert("Su correo no ha sido verificado, no podra iniciar sesion hasta hacerlo");
+                modalTitle.innerHTML = "Registro incompleto";
+                modalBody.innerHTML = "Su correo no ha sido verificado, por favor verifique el correo para iniciar sesión";
+                modal.classList.add("active");
+                overlay.classList.add("active");
                 auth.signOut();
             }
             e.target.reset()
