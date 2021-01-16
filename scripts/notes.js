@@ -76,14 +76,18 @@ function NewNote(content, color, Status, NoteId, MeAdmin) {
         var li = document.createElement("li");
         var b1 = document.createElement("button");
         var b2 = document.createElement("button");
+        var b3 = document.createElement("button");
         var i1 = document.createElement("i");
         var i2 = document.createElement("i");
+        var i3 = document.createElement("i");
 
         //assigning classes
         b1.className = "delete-btn";
         b2.className = "complete-btn";
+        b3.className = "fav-btn";
         i1.className = "fas fa-trash";
         i2.className = "fas fa-check";
+        i3.className = "far fa-star";
         div.className = "note";
         li.className = "note-content";
         li.textContent = content;
@@ -96,7 +100,7 @@ function NewNote(content, color, Status, NoteId, MeAdmin) {
         }
 
         switch (color) {
-            case "color-1": div.style.borderLeftColor = "#fcb059";
+            case "color-1": div.style.borderLeftColor = "#e07536";
                 break;
             case "color-2": div.style.borderLeftColor = "#fa8072";
                 break;
@@ -110,8 +114,10 @@ function NewNote(content, color, Status, NoteId, MeAdmin) {
 
         //appending elements
         div.appendChild(li);
+        div.appendChild(b3);
         div.appendChild(b1);
         div.appendChild(b2);
+        b3.appendChild(i3);
         b1.appendChild(i1);
         b2.appendChild(i2);
         todo_list.appendChild(div);

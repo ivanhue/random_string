@@ -1,6 +1,6 @@
 /* Color declaration  */
 :root{
-    --note-color-1: #fcb059;
+    --note-color-1: #e07536;
     --note-color-2: #fa8072;
     --note-color-3: #789dca;
     --note-color-4:  #57bd9e;
@@ -242,21 +242,47 @@ select{
     overflow: auto;
 }
 
-.delete-btn, .complete-btn{
+.note button{
+    height: 100%;
+}
+
+.delete-btn, .complete-btn,.fav-btn{
     border: none;
-    color: white;
     padding: 1rem;
     cursor: pointer;
     font-size: 1rem;
 }
 
 .delete-btn{
+    background: #ffffff;
+    color: rgb(247, 30, 30);
+    transition: 200ms ease-in;
+}
+.delete-btn:hover{
+    color: #ffffff;
     background: rgb(247, 30, 30);
 }
 .complete-btn{
-    background: rgb(63, 182, 73);
+    background: #ffffff;
+    color: rgb(63, 182, 73);
     border-bottom-right-radius: 15px;
     border-top-right-radius: 15px;
+    transition: 200ms ease-in;
+}
+.complete-btn:hover{
+    color: #ffffff;
+    background: rgb(63, 182, 73);
+}
+
+.fav-btn{
+    background: #ffffff;
+    color: rgb(255, 230, 0);
+    transition: 200ms ease-in;
+}
+
+.fav-btn:hover{
+    color: #ffffff;
+    background: rgb(255, 230, 0);
 }
 
 .fa-trash,
