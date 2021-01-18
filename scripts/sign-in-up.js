@@ -140,3 +140,24 @@ formLogin.addEventListener('submit', e => {
             e.target.password.focus()
         })
 })
+
+
+//Reset password
+
+const resetPassword = document.getElementById('send-firebase');
+const mailField = document.getElementById('email-firebase');
+const autenti = f.auth();
+
+const resetPasswordFunction = () => {
+    const email = mailField.value
+
+    autenti.sendPasswordResetEmail(email)
+    .then(() => {
+        c('Password Reset Email sent sussesfully!')
+    })
+    .catch(error => {
+        console.error(error);
+    })
+}
+
+resetPassword.addEventListener('click', resetPasswordFunction); 
