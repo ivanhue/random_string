@@ -40,6 +40,7 @@
                         <input type="password" name="password" placeholder="Contraseña" />
                     </div>
                     <input type="submit" value="Iniciar" class="btn solid" />
+                    <p class="btn-forget-password" id="btn-forget-password">¿Olvidaste tu contraseña?</p>
                     <p class="social-text">O Inicia Sesión con lo siguiente:</p>
                     <div class="social-media">
                         <a href="#" class="social-icon">
@@ -84,6 +85,24 @@
                 </form>
             </div>
         </div>
+
+        <!-- Pop up reset password -->
+        <form class="form-forget-password">
+            <div class="container-popup" id="modal-reset-password">
+                <div class="popup" id="popup">
+                    <p id="btn-close-popup" class="btn-close-popup">X</p>
+                    <div class="container-text">
+                        <h3>Recuperar contraseña</h3>
+                    </div>
+                    <div class="input-email">
+                        <input type="email" id="email-firebase" placeholder="Correo" />
+                    </div>
+                    <div class="container-btn">
+                        <input type="submit" id="send-firebase" class="btn-submit" value="ENVIAR">
+                    </div>
+                </div>
+            </div>
+        </form> 
 
         <div class="panels-container">
             <!-- Asks if you have an account or if you want to signup -->

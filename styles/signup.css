@@ -184,6 +184,137 @@ input {
     justify-content: center;
   }
 
+  /* Pop up reset password */
+  .forget-password {
+    font-size: .85rem;
+    padding: .3rem;
+  }
+
+  .btn-forget-password {
+    text-decoration: none;
+    color: #5995fd;
+    cursor: pointer;
+    
+  }
+
+  .container-popup{
+    position:fixed;
+    top: 0;
+    left:0;
+    bottom: 0;
+    right:0;
+    
+    border-radius: 5px;
+    z-index: 100;
+    display:flex;
+    align-items:center;
+    justify-content: center;
+    transition: .5s;
+
+    visibility: hidden;
+  }
+
+  .container-popup.active{
+    visibility: visible;
+    
+    background:rgba(0,0,0,.3);
+  }
+
+  .popup.active {
+    margin-top: 0;
+  }
+
+  .popup {
+    background: #ffffff;
+    border-radius: 25px;
+    padding:25px 60px;
+    transition:1.5s;
+    margin-top: -100%;
+    
+  }
+
+  .container-text{
+    margin-bottom: 20px;
+    margin-top: 10px;
+    text-align: center;
+
+  }
+
+  .btn-close-popup{
+    font-size: 16px;
+    position:sticky;
+    display:block;
+    margin-left:100%;
+    color:#BBBB;
+    text-decoration: none;
+    cursor: pointer;
+    text-align: center;
+    user-select: none;
+    width:25px;
+    margin-left: 110%;
+    margin-top: -5%;
+
+    padding:0;
+  }
+
+  .popup .btn-close-popup:hover {
+    color: #000000;
+  }
+
+  .input-email {
+    max-width: 380px;
+    width: 100%;
+    background-color: #f0f0f0;
+    margin: 10px 0;
+    height: 55px;
+    border-radius: 55px;
+    align-items: center;
+    
+    
+    padding: 0 0.4rem;
+    position: relative;
+  }
+
+  .input-email input {
+    background: none;
+    outline: none;
+    border: none;
+    line-height: 1;
+    font-weight: 600;
+    font-size: 1.1rem;
+    color: #333;
+    text-align: center;
+    height: 55px;
+  }
+
+ .container-btn{
+    border-radius: 50px;
+    background: #5995fd;
+    align-items: center;
+    height: 30px;
+    width:50%;
+    text-align: center;
+    margin-left: 25%;
+  }
+
+  .btn-submit {
+    background: none;
+    color: #f0f0f0;
+    outline: none;
+    border:none;
+    height: 30px;
+    font-weight: 600;
+
+    cursor: pointer;
+    width: 100%;
+    
+  }
+
+  .btn-submit:hover {
+    border-radius: 50px;
+    background: #4d84e2;
+  }
+
   .social-icon {
     height: 46px;
     width: 46px;
