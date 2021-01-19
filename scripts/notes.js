@@ -34,7 +34,7 @@ note_btn.addEventListener("click", function (event) {
 
 //check or remove a note
 todo_list.addEventListener("click", (e) => {
-    const todo = e.target;
+    var todo = e.target;
     if (todo.classList[0] === "complete-btn") {
         const check = todo.parentElement;
         if (todo.value == "false") {
@@ -45,7 +45,8 @@ todo_list.addEventListener("click", (e) => {
 
             todo.value = false;
         }
-        changeNote(todo.parentElement.children[1].value, todo.value)
+        
+        changeNote(todo.parentElement.children[2].value, todo.value)
 
     }
     else if (todo.classList[0] === "delete-btn") {
@@ -53,10 +54,55 @@ todo_list.addEventListener("click", (e) => {
         deleteNote(todo.value);
         check.remove();
     }
+    else if (todo.classList[0] === "fav-btn" || todo.parentElement.classList[0] === "fav-btn") {
+        if(todo.parentElement.classList[0] === "fav-btn")
+        {
+            todo=todo.parentElement;
+        }
+        if(todo.value == "true")
+        {
+            todo.value = false;
+        }
+        else if(todo.value == "false")
+        {
+            todo.value = true
+        }
+        favourites();
+    }
 
 });
 
+
 // functions
+function favourites() {
+    var list, i, switching, b, shouldSwitch;
+    list = todo_list;
+    switching = true;
+
+    while (switching) {
+
+      switching = false;
+      b = list.getElementsByTagName("div");
+      console.log();
+
+      for (i = 0; i < (b.length - 1); i++) {
+
+        shouldSwitch = false;
+
+        if (b[i].children[1].value < b[i+1].children[1].value) {
+          shouldSwitch = true;
+          break;
+        }
+      }
+      if (shouldSwitch) {
+
+        b[i].parentNode.insertBefore(b[i + 1], b[i]);
+        switching = true;
+      }
+
+    }
+}
+
 function CleanNotes() {
     while (todo_list.firstChild) {
         todo_list.removeChild(todo_list.lastChild);
@@ -69,7 +115,7 @@ function Title(x) {
     h1.innerText = x;
 }
 
-function NewNote(content, color, Status, NoteId, MeAdmin) {
+function NewNote(content, color, Status, NoteId, MeAdmin/*, fav*/) {
     if (content != 0) {
         //creating element
         var div = document.createElement("div")
@@ -94,9 +140,11 @@ function NewNote(content, color, Status, NoteId, MeAdmin) {
 
         b1.setAttribute("value", NoteId);
         b2.setAttribute("value", Status);
+        b3.setAttribute("value", false);/*change "false" to fav when implemented */
         if (MeAdmin == false) {
             b1.style.display = "none";
             b2.style.display = "none";
+            b3.style.display = "none";
         }
 
         switch (color) {
