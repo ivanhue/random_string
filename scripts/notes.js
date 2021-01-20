@@ -32,9 +32,10 @@ note_btn.addEventListener("click", function (event) {
     document.getElementById("text-box").value = '';
 });
 
-//check or remove a note
+//check,remove or mark a note as favorite
 todo_list.addEventListener("click", (e) => {
     var todo = e.target;
+    //check note
     if (todo.classList[0] === "complete-btn") {
         const check = todo.parentElement;
         if (todo.value == "false") {
@@ -49,11 +50,13 @@ todo_list.addEventListener("click", (e) => {
         changeNote(todo.parentElement.children[2].value, todo.value)
 
     }
+    //delete note
     else if (todo.classList[0] === "delete-btn") {
         const check = todo.parentElement;
         deleteNote(todo.value);
         check.remove();
     }
+    //Mark a note as favourite
     else if (todo.classList[0] === "fav-btn" || todo.parentElement.classList[0] === "fav-btn") {
         if(todo.parentElement.classList[0] === "fav-btn")
         {
@@ -74,6 +77,7 @@ todo_list.addEventListener("click", (e) => {
 
 
 // functions
+//Sort the notes puthing the fovourites on top
 function favourites() {
     var list, i, switching, b, shouldSwitch;
     list = todo_list;
