@@ -71,9 +71,9 @@ function signInSocial(plataform){
       }
     }).catch((error) => {
         let errorMessage = error.message;
-        if(error.code=='auth/email-already-exists'){
+        if(error.code=='auth/account-exists-with-different-credential'){
             modalTitle.innerHTML = "Lo sentimos pero usted ya se ha registrado con ese correo.";
-            modalBody.innerHTML = "Por favor incie sesión con la cuenta creada anteriormente. Puede que ya tenga cuanta en otra red social pero vinculada a ese correo";
+            modalBody.innerHTML = "Por favor incie sesión con la cuenta creada anteriormente. Puede que ya tenga cuanta en otra red social pero vinculada a ese correo.";
             modal.classList.add("active");
             overlay.classList.add("active");
         }
