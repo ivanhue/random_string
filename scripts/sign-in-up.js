@@ -9,6 +9,15 @@ const overlay = document.getElementById("overlay");
 const closeModal = document.querySelector(".btn-right");
 
 
+//Variables for each of the icons of the social network
+const googleIcon = document.getElementById("google"),
+    facebookIcon = document.getElementById("facebook"),
+    twitterIcon = document.getElementById("twitter")
+
+const googleIconS = document.getElementById("google-s"),
+    facebookIconS = document.getElementById("facebook-s"),
+    twitterIconS = document.getElementById("twitter-s")
+
 const auth = f.auth(),
     user = auth.currentUser,
     formSignin = d.getElementById('signin'),
@@ -25,6 +34,51 @@ function createUserInDB(uid, name, email) {
     }).catch((err) => {
         console.log(err);
     })
+}
+
+//Function that allows the launch of the login pop-up according to the social network used, receives as a parameter said network which can be: Google, Facebook or Twitter. If the registration of that social network is not enabled, no pop-up will be shown
+function signInSocial(plataform){
+    let provider;
+    switch (plataform) {
+        case 'Google':
+            provider = new firebase.auth.GoogleAuthProvider();
+            break;
+        case 'Facebook':
+            provider = new firebase.auth.FacebookAuthProvider();
+            break;
+        case 'Twitter':
+            provider = new firebase.auth.TwitterAuthProvider();
+            break;
+        default:
+            return;
+    }
+    auth
+    .signInWithPopup(provider) // https://firebase.google.com/docs/auth/web/google-signin
+    .then((result) => {
+      let user = result.user;
+      c(result.additionalUserInfo.isNewUser)
+      if(result.additionalUserInfo.isNewUser){            
+        //Insert in DB
+        createUserInDB(
+            user.uid,
+            user.displayName,
+            user.email
+        );
+        c("Registro exitoso")
+        
+      }else{
+        window.location.replace("dashboard.html");
+      }
+    }).catch((error) => {
+        let errorMessage = error.message;
+        if(error.code=='auth/account-exists-with-different-credential'){
+            modalTitle.innerHTML = "Lo sentimos pero usted ya se ha registrado con ese correo.";
+            modalBody.innerHTML = "Por favor incie sesión con la cuenta creada anteriormente. Puede que ya tenga cuanta en otra red social pero vinculada a ese correo.";
+            modal.classList.add("active");
+            overlay.classList.add("active");
+        }
+        c(errorMessage);
+    });
 }
 
 
@@ -160,4 +214,30 @@ const resetPasswordFunction = () => {
     })
 }
 
-resetPassword.addEventListener('click', resetPasswordFunction); 
+resetPassword.addEventListener('click', resetPasswordFunction);
+
+
+//Listners for each of the icons of the social network
+googleIcon.addEventListener('click', ()=>{
+    signInSocial('Google');
+});
+
+facebookIcon.addEventListener('click', ()=>{
+    signInSocial('Facebook');
+});
+
+twitterIcon.addEventListener('click', ()=>{
+    signInSocial('Twitter');
+});
+
+googleIconS.addEventListener('click', ()=>{
+    signInSocial('Google');
+});
+
+facebookIconS.addEventListener('click', ()=>{
+    signInSocial('Facebook');
+});
+
+twitterIconS.addEventListener('click', ()=>{
+    signInSocial('Twitter');
+});

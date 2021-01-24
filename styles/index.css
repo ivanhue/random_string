@@ -155,6 +155,17 @@ span{
     margin: 16px 0;
 }
 
+/* Footer properties */
+footer{
+    text-align: center;
+    color: #b19cd9;
+}
+
+footer a{
+    text-decoration: none;
+    color: #675b7c;
+}
+
 /* Properties for medium devices */
 @media (max-width: 870px){
     .right-column img{
