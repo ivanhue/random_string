@@ -36,7 +36,7 @@ firebase.auth().onAuthStateChanged(user => {
 })
 
 //
-function pushNote(text, color, status) {
+function pushNote(text, color, status, favourite) {
     firebase.auth().onAuthStateChanged(user => {
 
         if (user) {
@@ -45,7 +45,8 @@ function pushNote(text, color, status) {
             groupRef.child('notes').push({
                 color: color,
                 status: status,
-                text: text
+                text: text,
+                favourite: false
             })
         }
     })
